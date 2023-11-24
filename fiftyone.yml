@@ -1,0 +1,10 @@
+name: "@ehofesmann/dataset_dashboard"
+description: Dashboard of dataset information
+version: 1.0.0
+fiftyone:
+  version: "*"
+url: https://github.com/ehofesmann/dataset_dashboard
+license: Apache 2.0
+operators:
+  - count_samples
+  - show_alert
