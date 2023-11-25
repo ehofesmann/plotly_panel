@@ -1,7 +1,3 @@
-import fiftyone.operators as foo
-import fiftyone.operators.types as types
-from fiftyone import ViewField as F
-
 import plotly.express as px
 import plotly.graph_objects as go
 
