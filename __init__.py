@@ -1,4 +1,5 @@
 import fiftyone.operators as foo
+import fiftyone.operators.types as types
 
 from . import custom_plots
 
@@ -50,22 +51,55 @@ class GetPlotlyPlots(foo.Operator):
         )
 
     def execute(self, ctx):
-        try:
-            if ctx.dataset.view() == ctx.view:
-                samples = ctx.dataset
-            else:
-                samples = ctx.view
-            plots = generate_plots(
-                samples,
-                color_bg=ctx.params.get("color_bg", None),
-                color_divider=ctx.params.get("color_divider", None),
-                color_text=ctx.params.get("color_text", None),
-                color_secondary=ctx.params.get("color_text_secondary", None),
-            )
-            return {"plots": [[plot.to_json()] for plot in plots]}
-        except:
-            return {}
+        if ctx.dataset.view() == ctx.view:
+            samples = ctx.dataset
+        else:
+            samples = ctx.view
+        plots = generate_plots(
+            samples,
+            color_bg=ctx.params.get("color_bg", None),
+            color_divider=ctx.params.get("color_divider", None),
+            color_text=ctx.params.get("color_text", None),
+            color_secondary=ctx.params.get("color_text_secondary", None),
+        )
+        ctx.trigger(
+            f"{self.plugin_name}/update_plots",
+            params=dict(plots=[plot.to_json() for plot in plots]),
+        )
+
+
+class TestOpenPanel(foo.Operator):
+    @property
+    def config(self):
+        return foo.OperatorConfig(
+            name="test_open_panel",
+            label="Get operators that return plots",
+        )
+
+    def resolve_placement(self, ctx):
+        return types.Placement(
+            types.Places.SAMPLES_GRID_SECONDARY_ACTIONS,
+            types.Button(
+                label="Test plotly panel",
+                prompt=False,
+            ),
+        )
+
+    def execute(self, ctx):
+        ctx.trigger(
+            "@ehofesmann/dataset_dashboard/initial_setup",
+            params=dict(
+                plot_operator="@ehofesmann/dataset_dashboard/get_plotly_plots"
+            ),
+        )
+        ctx.trigger(
+            "open_panel",
+            params=dict(
+                name="PythonPlotlyPlugin", isActive=True, layout="horizontal"
+            ),
+        )
 
 
 def register(p):
     p.register(GetPlotlyPlots)
+    p.register(TestOpenPanel)
