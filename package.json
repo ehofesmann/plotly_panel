@@ -1,7 +1,7 @@
 {
   "name": "@ehofesmann/dataset_dashboard",
   "version": "1.0.0",
-  "main": "src/HelloWorldPlugin.tsx",
+  "main": "src/PythonPlotlyPlugin.tsx",
   "license": "MIT",
   "fiftyone": {
     "script": "dist/index.umd.js"

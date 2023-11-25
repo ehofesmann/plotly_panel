@@ -6,6 +6,4 @@ fiftyone:
 url: https://github.com/ehofesmann/dataset_dashboard
 license: Apache 2.0
 operators:
-  - count_samples
-  - show_alert
   - get_plotly_plots

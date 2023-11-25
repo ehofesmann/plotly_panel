@@ -54,7 +54,21 @@ def generate_plots(samples, color_bg=None, color_text=None, color_secondary=None
     _update_colors(fig3, color_bg, color_text, color_secondary, color_divider, title3, axis=False)
     _update_colors(fig4, color_bg, color_text, color_secondary, color_divider, title4)
 
-    return [fig, fig2, fig3, fig4]
+    fig5 = go.Figure(data=[go.Table(header=dict(values=['A Scores', 'B Scores'], font_color=color_secondary, line_color=color_bg, fill_color=color_divider),
+                 cells=dict(values=[[100, 90, 80, 90], [95, 85, 75, 95]], font_color=color_secondary, line_color=color_bg, fill_color=color_divider))
+                     ])
+    fig5.update_layout(
+        plot_bgcolor=color_bg, 
+        paper_bgcolor=color_bg, 
+        title= {
+            "text": "my table",
+            "font": {"color": color_text}
+        },
+        overwrite=True,
+    )
+
+
+    return [fig, fig2, fig3, fig4, fig5]
 
 
 class GetPlotlyPlots(foo.Operator):
@@ -81,58 +95,5 @@ class GetPlotlyPlots(foo.Operator):
             return {}
 
 
-class CountSamples(foo.Operator):
-    @property
-    def config(self):
-        return foo.OperatorConfig(
-            name="count_samples",
-            label="Count samples",
-            dynamic=True,
-        )
-
-    def resolve_input(self, ctx):
-        inputs = types.Object()
-
-        if ctx.view != ctx.dataset.view():
-            choices = types.RadioGroup()
-            choices.add_choice(
-                "DATASET",
-                label="Dataset",
-                description="Count the number of samples in the dataset",
-            )
-
-            choices.add_choice(
-                "VIEW",
-                label="Current view",
-                description="Count the number of samples in the current view",
-            )
-
-            inputs.enum(
-                "target",
-                choices.values(),
-                required=True,
-                default="VIEW",
-                view=choices,
-            )
-
-        return types.Property(inputs, view=types.View(label="Count samples"))
-
-    def execute(self, ctx):
-        target = ctx.params.get("target", "DATASET")
-        sample_collection = ctx.view if target == "VIEW" else ctx.dataset
-        return {"count": sample_collection.count()}
-
-    def resolve_output(self, ctx):
-        target = ctx.params.get("target", "DATASET")
-        outputs = types.Object()
-        outputs.int(
-            "count",
-            label=f"Number of samples in the current {target.lower()}",
-        )
-        return types.Property(outputs)
-
-
 def register(p):
-    p.register(CountSamples)
     p.register(GetPlotlyPlots)
-
