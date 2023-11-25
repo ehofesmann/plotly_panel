@@ -17,5 +17,8 @@
         "jsx": "react-jsx",
         "types": ["vite/client", "node"]
     },
-    "include": ["src"]
+    "include": ["src"],
+    "paths": {
+        "@fiftyone": ["/home/eric/work/fiftyone/fiftyone"]
+    }
 }

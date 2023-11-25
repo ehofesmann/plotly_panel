@@ -8,3 +8,5 @@ node_modules/*
 .yarn
 .pnp.*
 yarn-error.log
+.yarnrc.yml
+package-lock.json
