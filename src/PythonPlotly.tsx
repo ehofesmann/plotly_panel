@@ -34,11 +34,13 @@ export function PythonPlotly() {
       return <h3> No plots found. </h3>;
     }
     let retval = []
-    for (let i = 0; i < getPlotlyPlots.result?.plots.length; i++) {
-      retval.push(      <Plot
-        data={JSON.parse(getPlotlyPlots.result?.plots[i]).data}
-        layout={JSON.parse(getPlotlyPlots.result?.plots[i]).layout}
-      />   )
+    for (let i = 0; i < plotlyPlots.length; i++) {
+      retval.push(      
+        <Plot
+          data={JSON.parse(plotlyPlots[i]).data}
+          layout={JSON.parse(plotlyPlots[i]).layout}
+        />   
+      )
     }
     return retval;
   } else {
