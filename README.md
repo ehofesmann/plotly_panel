@@ -2,7 +2,13 @@
 
 This plugin provides a mechanism to add custom Plotly plots into a panel in your FiftyOne App requiring only Plotly figures implemented in Python.
 
-![image](https://github.com/ehofesmann/dataset_dashboard/assets/21222883/7780f99c-9021-48f3-bf37-5c1dd1abb5a0)
+<!---  ![image](https://github.com/ehofesmann/dataset_dashboard/assets/21222883/7780f99c-9021-48f3-bf37-5c1dd1abb5a0) --->
+
+
+
+https://github.com/ehofesmann/plotly_panel/assets/21222883/38b648a2-0041-4e6f-bd09-45cda8ef6f57
+
+
 
 
 ## Installation
