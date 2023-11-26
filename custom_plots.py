@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 def get_button():
     # Return a FiftyOne operator placement Button oncluding the text and optional SVG to open your panel
     return types.Button(
-        label="Open plot panel test",
+        label="Open example plots",
         prompt=False,
     )
 
