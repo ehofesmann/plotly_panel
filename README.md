@@ -27,4 +27,4 @@ Update the name of the plugin in `fiftyone.yml` from `name: "@ehofesmann/plotly_
 
 ### Step 3: Add your own ploty figures
 
-In the `custom_plots.py` file of your new plugin, optionally implement the `get_button()` function to customize the button to open your panel in the FiftyOne grid. Then update the `get_figures(samples)` function to generate your custom plotly figures, returning a list of figures.
+In the `custom_plots.py` file of your new plugin, optionally implement the `get_button()` function to customize the button to open your panel in the FiftyOne grid. Then update the `get_figures(samples)` function to generate your custom Plotly figures using your favorite Python Plotly package, returning a list of figures.
