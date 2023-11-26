@@ -1,13 +1,6 @@
-import {
-  registerOperator,
-  executeOperator,
-  Operator,
-  OperatorConfig,
-  useOperatorExecutor,
-} from "@fiftyone/operators";
+import { Operator, OperatorConfig } from "@fiftyone/operators";
 import * as state from "./state";
 import { useRecoilState } from "recoil";
-import { Button, useTheme } from "@fiftyone/components";
 
 export class InitialSetup extends Operator {
   get config() {
@@ -28,7 +21,5 @@ export class InitialSetup extends Operator {
   }
   async execute(ctx) {
     ctx.hooks.setPlotOperator(ctx.params.plot_operator);
-    console.log("initial setup");
-    console.log(ctx.hooks.plot_operator);
   }
 }

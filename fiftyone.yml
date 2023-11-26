@@ -6,8 +6,8 @@ fiftyone:
 url: https://github.com/ehofesmann/dataset_dashboard
 license: Apache 2.0
 operators:
+  - open_plotly_panel
   - get_plotly_plots
   - initial_setup
   - update_plots
   - trigger_update
-  - test_open_panel

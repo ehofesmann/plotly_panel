@@ -1,14 +1,17 @@
+import fiftyone.operators.types as types
+
 import plotly.express as px
 import plotly.graph_objects as go
 
 
-def custom_plots(
-    samples,
-    color_bg=None,
-    color_text=None,
-    color_secondary=None,
-    color_divider=None,
-):
+def get_button():
+    return types.Button(
+        label="Open plot panel test",
+        prompt=False,
+    )
+
+
+def get_figures(samples):
     df = px.data.gapminder().query("country=='Canada'")
     fig = px.line(df, x="year", y="lifeExp", title="Life expectancy in US")
     title = "Life expectancy in US"
@@ -50,15 +53,15 @@ def custom_plots(
             go.Table(
                 header=dict(
                     values=["A Scores", "B Scores"],
-                    font_color=color_secondary,
-                    line_color=color_bg,
-                    fill_color=color_divider,
+                    # font_color=color_secondary,
+                    # line_color=color_bg,
+                    # fill_color=color_divider,
                 ),
                 cells=dict(
                     values=[[100, 90, 80, 90], [95, 85, 75, 95]],
-                    font_color=color_secondary,
-                    line_color=color_bg,
-                    fill_color=color_divider,
+                    # font_color=color_secondary,
+                    # line_color=color_bg,
+                    # fill_color=color_divider,
                 ),
             )
         ]
