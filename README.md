@@ -8,7 +8,7 @@ This plugin provides a mechanism to add custom Plotly plots into a panel in your
 ## Installation
 
 ```shell
-fiftyone plugins download https://github.com/ehofesmann/plotly-panel
+fiftyone plugins download https://github.com/ehofesmann/plotly_panel
 ```
 
 Refer to the [main README](https://github.com/voxel51/fiftyone-plugins) for
