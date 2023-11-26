@@ -1,7 +1,7 @@
 {
-  "name": "@ehofesmann/dataset_dashboard",
+  "name": "@ehofesmann/plotly_panel",
   "version": "1.0.0",
-  "main": "src/PythonPlotlyPlugin.tsx",
+  "main": "src/PlotlyPanel.tsx",
   "license": "MIT",
   "fiftyone": {
     "script": "dist/index.umd.js"

@@ -20,7 +20,7 @@ class GetPlotlyPlots(foo.Operator):
             samples = ctx.view
         plots = custom_plots.get_figures(samples)
         ctx.trigger(
-            "@ehofesmann/dataset_dashboard/update_plots",
+            "@ehofesmann/plotly_panel/update_plots",
             params=dict(plots=[plot.to_json() for plot in plots]),
         )
 
@@ -34,7 +34,7 @@ class OpenPlotlyPanel(foo.Operator):
         )
 
     def resolve_placement(self, ctx):
-        if self.plugin_name == "@ehofesmann/dataset_dashboard":
+        if self.plugin_name == "@ehofesmann/plotly_panel":
             if ctx.dataset.name != "quickstart":
                 return None
         try:
@@ -54,7 +54,7 @@ class OpenPlotlyPanel(foo.Operator):
 
     def execute(self, ctx):
         ctx.trigger(
-            "@ehofesmann/dataset_dashboard/initial_setup",
+            "@ehofesmann/plotly_panel/initial_setup",
             params=dict(
                 plot_operator=f"{self.plugin_name}/get_plotly_plots",
             ),
@@ -62,7 +62,7 @@ class OpenPlotlyPanel(foo.Operator):
         ctx.trigger(
             "open_panel",
             params=dict(
-                name="PythonPlotlyPlugin", isActive=True, layout="horizontal"
+                name="PlotlyPanel", isActive=True, layout="horizontal"
             ),
         )
 

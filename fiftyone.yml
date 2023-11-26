@@ -1,9 +1,9 @@
-name: "@ehofesmann/dataset_dashboard"
-description: Dashboard of dataset information
+name: "@ehofesmann/plotly_panel"
+description: Extensible plugin for visualization of Plotly figures
 version: 1.0.0
 fiftyone:
   version: "*"
-url: https://github.com/ehofesmann/dataset_dashboard
+url: https://github.com/ehofesmann/plotly_panel
 license: Apache 2.0
 operators:
   - open_plotly_panel

@@ -10,9 +10,9 @@ import { UpdatePlots } from "./UpdatePlots";
 import { InitialSetup } from "./InitialSetup";
 import { useOperatorExecutor, registerOperator } from "@fiftyone/operators";
 
-const PLUGIN_NAME = "@ehofesmann/dataset_dashboard";
+const PLUGIN_NAME = "@ehofesmann/plotly_panel";
 
-export function PythonPlotlyPlugin() {
+export function PlotlyPanel() {
   const theme = useTheme();
 
   const view = useRecoilValue(fos.view);
@@ -64,9 +64,9 @@ export function PythonPlotlyPlugin() {
 }
 
 registerComponent({
-  name: "PythonPlotlyPlugin",
-  label: "Dataset dashboard",
-  component: PythonPlotlyPlugin,
+  name: "PlotlyPanel",
+  label: "Plotly Panel",
+  component: PlotlyPanel,
   type: PluginComponentType.Panel,
   activator: () => true,
 });
