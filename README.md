@@ -23,7 +23,7 @@ Copy the `__init__.py`, `custom_plots.py`, and `fiftyone.yml` files from this re
 
 ### Step 2: Update plugin name
 
-Update the name of the plugin in `fiftyone.yml` from `name: "@ehofesmann/plotly_panel"`` to your new plugin name.
+Update the name of the plugin in `fiftyone.yml` from `name: "@ehofesmann/plotly_panel"` to your new plugin name.
 
 ### Step 3: Add your own ploty figures
 
