@@ -15,6 +15,16 @@ Refer to the [main README](https://github.com/voxel51/fiftyone-plugins) for
 more information about managing downloaded plugins and developing plugins
 locally.
 
+## Run Example
+
+After installing this plugin, you can try the example panel yourself on the `quickstart` dataset.
+```python
+import fiftyone.zoo as foz
+
+dataset = foz.load_zoo_dataset("quickstart")
+session = fo.launch_app(dataset)
+```
+
 ## Adding your own plots
 
 ### Step 1: Create your own plugin
